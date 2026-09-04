@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Start With This Prompt</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root {
+  --bg: #F6F8F5; --surface: #FFFFFF; --ink: #171B1E; --muted: #5B6660; --accent: #2E7D3C; --accent-2: #8CCF84;
+  --line: #D9E2DA; --tint: #EAF4E8; --btn: #171B1E; --btn-ink: #8CCF84;
+  --display: "Bricolage Grotesque", "Avenir Next", "Segoe UI", Arial, sans-serif;
+  --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --mono: "IBM Plex Mono", "SF Mono", Menlo, Consolas, monospace;
+  color-scheme: light dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #121417; --surface: #1A1E23; --ink: #ECEFEA; --muted: #9AA59E; --accent: #8CCF84; --accent-2: #3E8E4B; --line: #2A3138; --tint: #1C261E; --btn: #8CCF84; --btn-ink: #121417; }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--serif); font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 780px; margin: 0 auto; padding: 32px 20px 72px; }
+.eyebrow { font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin: 0 0 12px; }
+h1 { font-family: var(--display); font-weight: 800; font-size: clamp(32px, 6vw, 48px); line-height: 1.05; letter-spacing: -.015em; margin: 0 0 12px; }
+h1 span { color: var(--accent); }
+p.lede { font-size: 18px; margin: 0 0 24px; max-width: 60ch; }
+h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 32px 0 10px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; margin: 0 0 14px; }
+.prompt { font-size: 17px; line-height: 1.65; white-space: pre-wrap; margin: 0; }
+.bar { display: flex; gap: 10px; align-items: center; justify-content: space-between; flex-wrap: wrap; margin-top: 14px; }
+.bar small { font-family: var(--mono); color: var(--muted); font-size: 12.5px; }
+button { font-family: var(--display); font-size: 16px; font-weight: 700; background: var(--btn); color: var(--btn-ink); border: 0; border-radius: 8px; padding: 12px 20px; cursor: pointer; }
+button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+ul { padding-left: 22px; margin: 0 0 6px; }
+li { margin: 0 0 8px; }
+li::marker { color: var(--accent); }
+.tools { display: flex; flex-wrap: wrap; gap: 8px; }
+.tools span { font-family: var(--mono); font-size: 12.5px; background: var(--tint); border-radius: 999px; padding: 6px 12px; }
+.foot { margin-top: 36px; font-family: var(--mono); font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 14px; }
+.toast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: var(--btn); color: var(--btn-ink); font-family: var(--display); padding: 10px 16px; border-radius: 8px; font-size: 14px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="eyebrow">From the talk "AI-Powered Construction: Beyond Automation" · Egypt Projects 2026 · Ahmed Lawendy, Premier UPVC</p>
+  <h1>Start tonight <span>with this prompt</span></h1>
+  <p class="lede">Copy the text below into any AI assistant (Claude, ChatGPT or another), then answer its questions honestly. It asks for your language first — Arabic or English — and then works like a consultant: it keeps asking until it finds the pattern, the recurring problem in your work worth solving, and guides you step by step to solve it.</p>
+
+  <h2>The prompt</h2>
+  <div class="card">
+    <p class="prompt" id="p-en">You are an expert consultant on applying AI inside companies. First, ask me which language I prefer — Arabic or English — and continue the whole conversation in that language. I work in [write your field here: a contracting company / a building-materials factory / a consulting office / real-estate development...].
+
+Ask me one question at a time about my work: what we make or deliver, who our customers are, how a working day goes, where time and money leak, what data, files and systems we have, and where problems repeat. Keep asking — at least ten questions — and do not propose any solution before you discover the pattern: the recurring problem worth solving.
+
+Then: summarise the pattern in three sentences, propose three ways AI could help, choose one with me to start this week at the lowest cost and risk, and guide me step by step until we solve it.
+
+Use plain language. Never invent numbers or facts about my company — ask me for them. And remind me that the final decision stays with me.</p>
+    <div class="bar"><small>Edit the part in brackets to fit your field.</small><button type="button" data-copy="p-en">Copy the prompt</button></div>
+  </div>
+
+  <h2>Where to use it</h2>
+  <div class="tools"><span>claude.ai</span><span>Claude Code</span><span>ChatGPT</span><span>Gemini</span><span>Microsoft Copilot</span><span>any assistant that reads Arabic</span></div>
+
+  <h2>Four tips before you start</h2>
+  <ul>
+    <li><strong>Be specific about your field.</strong> "A contracting company doing finishing works in New Cairo, 40 staff" beats "a contracting company".</li>
+    <li><strong>Answer with real numbers.</strong> If you do not know a number, say "I don't know" — that is itself an important finding.</li>
+    <li><strong>Never paste confidential data</strong> (contracts, customer names, detailed financials) into public tools or personal accounts. Use a business account with commercial terms, or describe the problem without the secrets.</li>
+    <li><strong>The decision is yours.</strong> AI proposes, you decide. Always ask it to show the source of any number or claim.</li>
+  </ul>
+
+  <p class="foot">Ahmed Lawendy · CEO, Premier UPVC · a.lawendy@upvcp.com · Talk materials available on request.</p>
+</div>
+<script>
+(function () {
+  function toast(msg) { var t = document.createElement('div'); t.className = 'toast'; t.textContent = msg; document.body.appendChild(t); setTimeout(function () { t.remove(); }, 1800); }
+  document.querySelectorAll('button[data-copy]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var text = document.getElementById(b.getAttribute('data-copy')).textContent;
+      function done() { toast('Copied'); }
+      if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(text).then(done, function () { fallback(text); done(); }); }
+      else { fallback(text); done(); }
+    });
+  });
+  function fallback(text) { var ta = document.createElement('textarea'); ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0'; document.body.appendChild(ta); ta.select(); try { document.execCommand('copy'); } catch (e) {} ta.remove(); }
+})();
+</script>
+</body>
+</html>
