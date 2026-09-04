@@ -5,6 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
 <title>Start With This Prompt</title>
+<script>
+  // Google Analytics 4 — measurement ID is set once; nothing loads until it is a real G- id.
+  var GA_ID = 'G-XXXXXXXXXX';
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  if (/^G-[A-Z0-9]{6,}$/.test(GA_ID) && GA_ID !== 'G-XXXXXXXXXX') {
+    var s = document.createElement('script'); s.async = true; s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID; document.head.appendChild(s);
+    gtag('js', new Date()); gtag('config', GA_ID);
+  }
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
@@ -31,13 +41,16 @@ h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 32p
 .prompt { font-size: 17px; line-height: 1.65; white-space: pre-wrap; margin: 0; }
 .bar { display: flex; gap: 10px; align-items: center; justify-content: space-between; flex-wrap: wrap; margin-top: 14px; }
 .bar small { font-family: var(--mono); color: var(--muted); font-size: 12.5px; }
-button { font-family: var(--display); font-size: 16px; font-weight: 700; background: var(--btn); color: var(--btn-ink); border: 0; border-radius: 8px; padding: 12px 20px; cursor: pointer; }
-button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+button, a.btn { font-family: var(--display); font-size: 16px; font-weight: 700; background: var(--btn); color: var(--btn-ink); border: 0; border-radius: 8px; padding: 12px 20px; cursor: pointer; text-decoration: none; display: inline-block; }
+a.btn.secondary { background: var(--tint); color: var(--ink); border: 1px solid var(--line); }
+button:focus-visible, a.btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 ul { padding-left: 22px; margin: 0 0 6px; }
 li { margin: 0 0 8px; }
 li::marker { color: var(--accent); }
 .tools { display: flex; flex-wrap: wrap; gap: 8px; }
 .tools span { font-family: var(--mono); font-size: 12.5px; background: var(--tint); border-radius: 999px; padding: 6px 12px; }
+.found { background: var(--tint); border-radius: 12px; padding: 18px 20px; margin-top: 30px; }
+.found p { margin: 0 0 12px; }
 .foot { margin-top: 36px; font-family: var(--mono); font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 14px; }
 .toast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: var(--btn); color: var(--btn-ink); font-family: var(--display); padding: 10px 16px; border-radius: 8px; font-size: 14px; }
 </style>
@@ -71,19 +84,27 @@ Use plain language. Never invent numbers or facts about my company — ask me fo
     <li><strong>The decision is yours.</strong> AI proposes, you decide. Always ask it to show the source of any number or claim.</li>
   </ul>
 
+  <div class="found">
+    <p><strong>Found your pattern?</strong> Tell me what it was and what you decided to start. I read every reply, and the best ones become examples in the next talk (with your permission).</p>
+    <a class="btn secondary" id="share-result" href="mailto:a.lawendy@upvcp.com?subject=My%20pattern%20from%20the%20Egypt%20Projects%20prompt&body=Company%20%2F%20field%3A%0AThe%20pattern%20the%20AI%20found%3A%0AWhat%20I%20decided%20to%20start%20this%20week%3A%0A">Tell me what you found</a>
+  </div>
+
   <p class="foot">Ahmed Lawendy · CEO, Premier UPVC · a.lawendy@upvcp.com · Talk materials available on request.</p>
 </div>
 <script>
 (function () {
+  function track(name, params) { try { if (typeof gtag === 'function') gtag('event', name, params || {}); } catch (e) {} }
   function toast(msg) { var t = document.createElement('div'); t.className = 'toast'; t.textContent = msg; document.body.appendChild(t); setTimeout(function () { t.remove(); }, 1800); }
   document.querySelectorAll('button[data-copy]').forEach(function (b) {
     b.addEventListener('click', function () {
       var text = document.getElementById(b.getAttribute('data-copy')).textContent;
-      function done() { toast('Copied'); }
+      function done() { toast('Copied'); track('copy_prompt', { language: 'en' }); }
       if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(text).then(done, function () { fallback(text); done(); }); }
       else { fallback(text); done(); }
     });
   });
+  var share = document.getElementById('share-result');
+  if (share) share.addEventListener('click', function () { track('share_result'); });
   function fallback(text) { var ta = document.createElement('textarea'); ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0'; document.body.appendChild(ta); ta.select(); try { document.execCommand('copy'); } catch (e) {} ta.remove(); }
 })();
 </script>
